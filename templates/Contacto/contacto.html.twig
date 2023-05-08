@@ -1,0 +1,115 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<!-- Contact Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            {# <div class="row g-4 mb-5">
+                <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="h-100 bg-light d-flex align-items-center p-2">
+                        <div class="btn-lg-square bg-white flex-shrink-0">
+                            <i class="fa fa-map-marker-alt text-primary"></i>
+                        </div>
+                        <div class="ms-4">
+                            <p class="mb-2">
+                                <span class="text-primary me-2">#</span>Direccion
+                            </p>
+                            <h5 class="mb-0">Av. Arjona, 5, 23006 Jaén</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="h-100 bg-light d-flex align-items-center p-2">
+                        <div class="btn-lg-square bg-white flex-shrink-0">
+                            <i class="fa fa-phone-alt text-primary"></i>
+                        </div>
+                        <div class="ms-4">
+                            <p class="mb-2">
+                                <span class="text-primary me-2">#</span>Llamanos
+                            </p>
+                            <h5 class="mb-0">+012 345 6789</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="h-100 bg-light d-flex align-items-center p-2">
+                        <div class="btn-lg-square bg-white flex-shrink-0">
+                            <i class="fa fa-envelope-open text-primary"></i>
+                        </div>
+                        <div class="ms-4">
+                            <p class="mb-2">
+                                <span class="text-primary me-2">#</span>Escribenos un email
+                            </p>
+                            <h5 class="mb-0">campeonatoskarateproyecto@gmail.com</h5>
+                        </div>
+                    </div>
+                </div>
+            </div> #}
+
+            <div class="row g-5">
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <p><span class="text-primary me-2">#</span>Contacta con nosotros</p>
+                    <h1 class="display-5 mb-4">¿Tiene alguna pragunta?</h1>
+                    <p class="mb-4">
+                        Bienvenido a nuestra asociación de campeonatos de Karate. 
+                        Si tienes preguntas o comentarios, completa el formulario de contacto o 
+                        envíanos un correo electrónico a la dirección que aparece en la parte 
+                        superior de la página. ¡Estamos comprometidos en brindarte el mejor servicio 
+                        posible y esperamos saber de ti pronto!
+                    </p>
+                    <form action="{{ path('app_contact') }}" method="POST">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control bg-light border-0" id="name" placeholder="Su Nombre" name="nombre"/>
+                                    <label for="name">Su Nombre</label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="email" class="form-control bg-light border-0" id="email" name="email" placeholder="Su Email"/>
+                                    <label for="email">Su Email</label>
+                                </div>
+                            </div>
+                
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control bg-light border-0" id="subject" placeholder="Asunto"/>
+                                    <label for="subject">Asunto</label>
+                                </div>
+                            </div>
+                
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <textarea class="form-control bg-light border-0" placeholder="Deje su mensaje aquí" id="message" name="mensaje" style="height: 100px"></textarea>
+                                    <label for="message">Mensaje</label>
+                                </div>
+                            </div>
+                
+                            <div class="col-12">
+                                <button class="btn btn-primary w-100 py-3" type="submit">Enviar Mensaje</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="h-100" style="min-height: 400px">
+                        <iframe
+                            class="rounded w-100 h-100"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.3744218109255!2d-3.8067947846821966!3d37.781264179758224!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd6dd71774e45867%3A0x99df1e0032930534!2sIES%20Las%20Fuentezuelas!5e0!3m2!1ses!2ses!4v1676313821705!5m2!1ses!2ses"
+                            frameborder="0"
+                            allowfullscreen=""
+                            aria-hidden="false"
+                            tabindex="0"
+                        ></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contact End -->
+{% endblock %}

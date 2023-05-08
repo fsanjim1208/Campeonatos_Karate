@@ -1,0 +1,103 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h2 class="text-primary text-uppercase mt-1 text-center">Mis Datos</h2>
+<div class="c-contentForm centraFormulario">
+        
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <div class="">
+                        <label>Nombre</label>
+                        <input type="text" class="form-control"value={{app.user.nombre}}>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col">
+                            <label>Apellido 1</label>
+                            <input type="text" class="form-control"value={{app.user.apellido1}}>
+                        </div>
+
+                        <div class="col">
+                            <label>Apellido 2</label>
+                            <input type="text" class="form-control"value={{app.user.apellido2}}>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col">
+                            <label for="peso">Peso</label>
+                            <input type="number" class="form-control" value={{app.user.peso}}>
+                        </div>
+
+                        <div class="col">
+                            <label for="fecha_nacimiento">Fecha de Nacimiento</label>
+                            {% set fecha = app.user.getFechaNacimiento()|date('d-m-Y') %}
+                            <input type="text" class="form-control" value={{fecha}}>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        {% if app.user.sexo=="masculino" %}
+                            <div class="col">
+                                <label >Sexo</label><br>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="sexo" id="masculino" value="Masculino" checked>
+                                    <label class="form-check-label" for="masculino" >Masculino</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="sexo" id="femenino" value="Femenino">
+                                    <label class="form-check-label" for="femenino">Femenino</label>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="col">
+                                <label >Sexo</label><br>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="sexo" id="masculino" value="Masculino">
+                                    <label class="form-check-label" for="masculino">Masculino</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="sexo" id="femenino" value="Femenino" checked>
+                                    <label class="form-check-label" for="femenino" >Femenino</label>
+                                </div>
+                            </div>
+                        {% endif %}
+                        
+
+                        <div class="col mt-4">
+                            <label for="fecha_nacimiento">Categoria: {{app.user.categoria.Nombre}}</label>
+                        </div>
+                    </div>
+                    
+                    <br>
+                    <div class="row">
+                        <div class="col">
+                            <label for="comunidad">Comunidad Autonoma</label>
+                            <input type="text" class="form-control" value={{comunidad.Nombre}}>
+                        </div>
+
+                        <div class=" col">
+                            <label for="provincia">Provincia</label>
+                            <input type="text" class="form-control" value={{app.user.provincia}}>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="">
+                        <label for="peso">Email</label>
+                        <input type="email" class="form-control" value={{app.user.email}}>
+                    </div>
+                    <br>
+
+                    {# {% if error %}
+                        <label class="text-danger">{{error}}</label>
+                    {% endif %}
+                     #}
+
+                    <br>
+
+                    <button class="btn btn-primary w-100 py-3" type="submit">Modificar Datos</button>
+                </div>
+            </div>
+    </div>
+    {{ dump() }}
+{% endblock %}

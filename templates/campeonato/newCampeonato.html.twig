@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+{% block javascripts %}
+    <script src="{{ asset('JS/campeonato/newCampeonato.js') }}" type="text/javascript"></script>
+{% endblock %}
+{% block body %}
+    <div class="c-contentForm">
+        <h2 class="text-primary text-uppercase mt-1">Nuevo Campeonato</h2>
+        {{ form_start(form,{'attr' : {'class': 'centraFormulario'}}) }}
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <div class="form-floating">
+                        {{ form_row(form.Nombre,{'attr' : {'class': 'form-control', 'placeholder':'Nombre'},label:'Nombre'}) }}
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="form-floating col">
+                            {{ form_row(form.N_max_participantes,{'attr' : {'class': 'form-control','placeholder':'Numero de Competidores'},label:"Numero de Competidores"}) }}
+                        </div>
+
+                        <div class=" col">
+                            <label for="fecha_inicio">Fecha de Inicio</label>
+                            <input type="date" class="form-control" id="fecha_inicio" name="fecha_inicio" placeholder="dd/mm/aaaa">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col">
+                            <label class="text-center">Tipo</label><br>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="tipo" id="Nacional" value="Nacional" checked>
+                                <label class="form-check-label" for="Nacional">Nacional</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="tipo" id="Autonomico" value="Autonomico">
+                                <label class="form-check-label" for="Autonomico">Autonomico</label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <label for="comunidad">Provincia</label>
+                            <br>
+                            <select class="form-select form-select-m" id="comunidad" name="comunidad" disabled></select>
+                        </div>
+                    </div>
+                            
+
+                    <br>
+                    <div class="form-floating">
+                        {{ form_row(form.Cartel,{'attr' : {'class': 'form-control','placeholder':'Email'},label:'Cartel'}) }}
+                    </div>
+                    <br>
+
+                    {# {% if error %}
+                        <label class="text-danger">{{error}}</label>
+                    {% endif %}
+                     #}
+
+                    <br>
+
+                    <button class="btn btn-primary w-100 py-3" type="submit">Crear Campeonato</button>
+                </div>
+            </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "base.html.twig" %}
+    {% block body %}
+    
+    <div id="campeonato" class=" mt-4">
+
+        <h3 class="text-primary mb-4 text-center">Todos los Campeonatos</h3>
+        <table class="miTabla table table-hover table-bordered table-condensed w-75">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Numero de participantes</th>
+                    <th>Fehca de Inicio</th>
+                    <th>Tipo</th>
+                    <th>Comunidad Autonoma</th>
+                    <th>Cartel</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for campeonato in campeonatos %}
+                    <tr>
+                        <td>{{ campeonato.Nombre }}</td>
+                        <td>{{ campeonato.NMaxParticipantes}}</td>
+                        <td>{{ campeonato.fechaInicio|date('d-m-Y') }}</td> 
+                        <td>{{ campeonato.tipo }}</td> 
+                        {% if campeonato.tipo=="Autonomico" %}
+                            <td>{{ campeonato.ComunidadAutonoma.nombre }}</td> 
+                        {% else %}
+                            <td></td>
+                        {% endif %} 
+                        {% if campeonato.cartel %}
+                            <td><img src="{{campeonato.cartel}}" class="c-imagen c-imagen--juegos" ></img></td>
+                        {% else %}
+                            <td>Sin imagen</td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{{dump()}}
+
+    {% endblock %}
