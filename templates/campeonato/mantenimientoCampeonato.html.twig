@@ -26,16 +26,19 @@
                         <td>{{ campeonato.NMaxParticipantes}}</td>
                         <td>{{ campeonato.fechaInicio|date('d-m-Y') }}</td> 
                         <td>{{ campeonato.tipo }}</td> 
+                        
                         {% if campeonato.tipo=="Autonomico" %}
                             <td>{{ campeonato.ComunidadAutonoma.nombre }}</td> 
                         {% else %}
                             <td></td>
                         {% endif %} 
+
                         {% if campeonato.cartel %}
-                            <td><img src="{{campeonato.cartel}}" class="c-imagen c-imagen--juegos" ></img></td>
+                            <td><img src="{{campeonato.cartel}}" class="c-imagen w-75" ></img></td>
                         {% else %}
                             <td>Sin imagen</td>
                         {% endif %}
+                        
                         <td>
                             {% if campeonato.fechaInicio > date() %}
                                 <a href="/editaEvento/{{campeonato.id}}"><button type="button" class="btn btn-primary  mb-1" id="{{campeonato.id}}"><i class="fa fa-edit"></i>  Editar</button></a> 

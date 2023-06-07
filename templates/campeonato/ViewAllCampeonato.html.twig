@@ -1,6 +1,10 @@
 {% extends "base.html.twig" %}
+    {% block javascripts %}
+        <script src="{{ asset('JS/campeonato/inscribirCompetidor.js') }}" type="text/javascript"></script>
+
+    {% endblock %}
     {% block body %}
-    
+
     <div id="campeonato" class=" mt-4">
 
         <h3 class="text-primary mb-4 text-center">Todos los Campeonatos</h3>
@@ -13,6 +17,9 @@
                     <th>Tipo</th>
                     <th>Comunidad Autonoma</th>
                     <th>Cartel</th>
+                    {% if app.user %}
+                        <th>Acción</th>
+                    {% endif %}
                 </tr>
             </thead>
             <tbody>
@@ -31,6 +38,25 @@
                             <td><img src="{{campeonato.cartel}}" class="c-imagen c-imagen--juegos" ></img></td>
                         {% else %}
                             <td>Sin imagen</td>
+                        {% endif %}
+                        {% if app.user %}
+                            {% set fechaActual = date() %}
+                            {% if campeonato.fechaInicio > fechaActual %}
+                                {% set found = false %}
+                                {% for participa in participaciones %}
+                                    {% if participa.user.id == app.user.id and participa.campeonato.id == campeonato.id %}
+                                        {% set found = true %}
+                                        <td><i class="fas fa-fist-raised"></i>  Ya estás inscrito  <i class="fas fa-fist-raised"></i> </td>
+                                    {% endif %}
+                                {% endfor %}
+                                {% if not found %}
+                                    <td><button type="button" class="btn btn-secondary mb-1 inscribir" id="{{campeonato.id}}" ><i class="fas fa-sign-in-alt"></i> Inscribirme</button></td>
+                                {% endif %}
+                            {% elseif campeonato.fechaInicio == fechaActual %}
+                                <td><button type="button" class="btn btn-secondary mb-1 inscribir" id="{{campeonato.id}}" ><i class="far fa-eye"></i> Ver Campeonato</button></td>
+                            {% else %}
+                                <td>Campeonato finalizado</td>
+                            {% endif %}
                         {% endif %}
                     </tr>
                 {% endfor %}

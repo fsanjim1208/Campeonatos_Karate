@@ -103,12 +103,14 @@
         </button>
         <div class="collapse navbar-collapse py-0 py-lg-0" id="navbarCollapse">
             <div class="navbar-nav ms-auto">
-                <a href="index.html" class="nav-item nav-link active">Home</a>
+                <a href="{{ path('app_home') }}" class="nav-item nav-link active">Home</a>
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Campeonatos</a>
                     <div class="dropdown-menu rounded-0 rounded-bottom m-0">
+                        <a href="{{ path('app_campeonatos_activos') }}" class="dropdown-item">Activos</a>
                         <a href="{{ path('app_allCampeonato') }}" class="dropdown-item">Todos</a>
-                        <a href="membership.html" class="dropdown-item">Proximos</a>
+                        <a href="{{ path('app_allCampeonato') }}" class="dropdown-item">Proximos</a>
+                        <a href="{{ path('app_marcador') }}" class="dropdown-item">Marcador</a>
                     </div>
                 </div>
                 <a href="service.html" class="nav-item nav-link">Competidores</a>

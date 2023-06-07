@@ -1,0 +1,35 @@
+{% extends "base.html.twig" %}
+    {% block javascripts %}
+        <script src="{{ asset('JS/campeonato/inscribirCompetidor.js') }}" type="text/javascript"></script>
+
+    {% endblock %}
+    {% block body %}
+
+
+    {% for campeonato in campeonatos %}
+        {% set fechaActual = date() %}
+        {% if campeonato.fechaInicio|date('d-m-Y') == fechaActual|date('d-m-Y') %}
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4 mx-auto">
+                        <div class="card">
+                            <img src="{{campeonato.cartel}}" class="card-img-top w-50 mx-auto" style="vertical-align: middle;" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title text-center">{{campeonato.nombre}}</h5>
+                                {% if campeonato.tipo=="Autonomico" %}
+                                    <p class="card-text text-center">Campeonato de {{ campeonato.ComunidadAutonoma.nombre }}</p> 
+                                {% else %}
+                                    <p class="card-text">Campeonato a nivel Nacional</p>
+                                {% endif %} 
+                            <p class="card-text text-center">{{campeonato.fechaInicio|date('d / m / Y')}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}    
+
+{# {{dump()}} #}
+
+    {% endblock %}

@@ -24,24 +24,24 @@ class Participa
         return $this->id;
     }
 
-    public function getUser(): ?user
+    public function getUser(): ?User
     {
         return $this->user;
     }
 
-    public function setParticipa(?user $user): self
+    public function setUser(?User $user): self
     {
         $this->user = $user;
 
         return $this;
     }
 
-    public function getCampeonato(): ?campeonato
+    public function getCampeonato(): ?Campeonato
     {
         return $this->campeonato;
     }
 
-    public function setCampeonato(?campeonato $campeonato): self
+    public function setCampeonato(?Campeonato $campeonato): self
     {
         $this->campeonato = $campeonato;
 

@@ -8,6 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Provincia;
 use App\Entity\User;
 use App\Entity\Campeonato;
+use App\Entity\Participa;
 use App\Entity\ComunidadAutonoma;
 use App\Form\CampeonatoType;
 use Symfony\Component\HttpFoundation\Request;
@@ -72,6 +73,9 @@ class CampeonatoController extends AbstractController
         EntityManagerInterface $entityManager
     ): Response
     {
+        $participaciones=$this->doctrine
+        ->getRepository(Participa::class)
+        ->findAll();
 
         $campeonatos=$this->doctrine
         ->getRepository(Campeonato::class)
@@ -79,7 +83,8 @@ class CampeonatoController extends AbstractController
 
         return $this->render('campeonato/viewAllCampeonato.html.twig', [
             'controller_name' => 'MiController',
-            'campeonatos'=>$campeonatos
+            'campeonatos'=>$campeonatos,
+            'participaciones'=>$participaciones,
         ]);
     }
 
@@ -100,6 +105,22 @@ class CampeonatoController extends AbstractController
         ]);
     }
 
+    #[Route('/campeonatosActivos', name: 'app_campeonatos_activos')]
+    public function campeonatosActivos(
+        Request $request, 
+        EntityManagerInterface $entityManager
+    ): Response
+    {
+
+        $campeonatos=$this->doctrine
+        ->getRepository(Campeonato::class)
+        ->findAll();
+
+        return $this->render('campeonato/ViewCampeonatosActivos.html.twig', [
+            'controller_name' => 'MiController',
+            'campeonatos'=>$campeonatos
+        ]);
+    }
 
 
 
